@@ -15,6 +15,8 @@
   }
 
   function RadioGroup(id) {
+    console.log(id);
+    console.log(this);
     this.el = document.querySelector(id);
     this.buttons = slice(this.el.querySelectorAll('.radio'));
     this.focusedIdx = 0;
@@ -31,7 +33,13 @@
 
         e.preventDefault();
 
-        // This seems like a good place to do some stuff :)
+        // if (this.focusedIdx === 0) {
+        //   this.focusedIdx = this.buttons.length - 1;
+        // } else {
+        //   this.focusedIdx--;
+        // }
+
+        this.focusedIdx = this.focusedIdx === 0 ? this.buttons.length-1 : this.focusedIdx--;
 
         break;
 
@@ -42,7 +50,11 @@
 
         e.preventDefault();
 
-        // This seems like a good place to do some stuff :)
+        if (this.focusedIdx === this.buttons.length-1){
+          this.focusedIdx = 0;
+        } else {
+          this.focusedIdx++;
+        }
 
         break;
       }
